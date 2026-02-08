@@ -23,6 +23,6 @@
     <Project Path="src/Wis.Presentation.Http/Wis.Presentation.Http.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="Wis.Tests/Wis.Tests.csproj" />
+    <Project Path="tests/Wis.Tests/Wis.Tests.csproj" />
   </Folder>
 </Solution>

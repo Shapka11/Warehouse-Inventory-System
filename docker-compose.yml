@@ -1,0 +1,30 @@
+﻿services:
+  db:
+    image: postgres:17
+    container_name: wis_db
+    restart: always
+    environment:
+      POSTGRES_DB: WISDatabase
+      POSTGRES_USER: wis_user
+      POSTGRES_PASSWORD: wis_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wis_api
+    depends_on:
+      - db
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=WISDatabase;Username=wis_user;Password=wis_password;
+    restart: on-failure
+
+volumes:
+  postgres_data:
