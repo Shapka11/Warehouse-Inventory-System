@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Application</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Wis.Application.Abstractions\Wis.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\Wis.Application.Contracts\Wis.Application.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
