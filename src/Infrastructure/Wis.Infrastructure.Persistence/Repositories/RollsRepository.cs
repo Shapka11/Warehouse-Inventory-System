@@ -18,12 +18,21 @@ public sealed class RollsRepository : IRollsRepository
 
     public async Task AddAsync(Roll roll, CancellationToken token = default)
     {
-        await _context.AddAsync(roll, token);
+        await _context.AddAsync(roll.MapToEntity(), token);
     }
     
     public Task Update(Roll roll, CancellationToken token = default)
     {
-        _context.Rolls.Update(roll.MapToEntity());
+        var newEntity = roll.MapToEntity();
+        var localEntity = _context.Rolls.Local.FirstOrDefault(e => e.Id == newEntity.Id);
+
+        if (localEntity is not null)
+        {
+            _context.Entry(localEntity).State = EntityState.Detached;
+        }
+
+        _context.Rolls.Update(newEntity);
+
         return Task.CompletedTask;
     }
 

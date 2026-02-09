@@ -4,6 +4,23 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentAssertions" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" />
+      <PackageReference Include="NSubstitute" />
+      <PackageReference Include="xunit" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Application\Wis.Application.Abstractions\Wis.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\..\src\Application\Wis.Application\Wis.Application.csproj" />
+      <ProjectReference Include="..\..\src\Domain\Wis.Domain\Wis.Domain.csproj" />
+      <ProjectReference Include="..\..\src\Infrastructure\Wis.Infrastructure.Persistence\Wis.Infrastructure.Persistence.csproj" />
+    </ItemGroup>
 
 </Project>
