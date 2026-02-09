@@ -22,10 +22,10 @@ public class StatisticsRollServiceTests
         _context = Substitute.For<IPersistenceContext>();
         _repo = Substitute.For<IRollsRepository>();
         _context.RollsRepository.Returns(_repo);
-        
+
         _service = new StatisticsRollService(_context);
     }
-    
+
     [Fact]
     public async Task GetStatistics_ShouldCalculateCorrectPhysicalMetrics()
     {
@@ -60,11 +60,11 @@ public class StatisticsRollServiceTests
     {
         // Arrange
         var start = DateTimeOffset.UtcNow.AddDays(-30);
-    
-        var rollShort = new Roll(Guid.NewGuid(), new Length(10), new Weight(100), 
+
+        var rollShort = new Roll(Guid.NewGuid(), new Length(10), new Weight(100),
             start, start.AddDays(2));
-    
-        var rollLong = new Roll(Guid.NewGuid(), new Length(10), new Weight(100), 
+
+        var rollLong = new Roll(Guid.NewGuid(), new Length(10), new Weight(100),
             start, start.AddDays(10));
 
         _repo.QueryAsync(Arg.Any<RollsQuery>(), Arg.Any<CancellationToken>())

@@ -8,7 +8,7 @@ public sealed class PersistenceContext : IPersistenceContext
     private readonly WarehouseDbContext _db;
 
     public PersistenceContext(
-        WarehouseDbContext db, 
+        WarehouseDbContext db,
         IRollsRepository rollsRepository)
     {
         _db = db;
@@ -17,6 +17,6 @@ public sealed class PersistenceContext : IPersistenceContext
 
     public IRollsRepository RollsRepository { get; }
 
-    public Task<int> SaveChangesAsync(CancellationToken token = default) 
+    public Task<int> SaveChangesAsync(CancellationToken token = default)
         => _db.SaveChangesAsync(token);
 }

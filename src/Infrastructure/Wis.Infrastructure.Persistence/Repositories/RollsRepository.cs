@@ -20,7 +20,7 @@ public sealed class RollsRepository : IRollsRepository
     {
         await _context.AddAsync(roll.MapToEntity(), token);
     }
-    
+
     public Task Update(Roll roll, CancellationToken token = default)
     {
         var newEntity = roll.MapToEntity();
@@ -50,5 +50,5 @@ public sealed class RollsRepository : IRollsRepository
 
         return entities.Select(r => r.MapToDomain());
     }
-    
+
 }

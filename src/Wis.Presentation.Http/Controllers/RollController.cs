@@ -14,7 +14,7 @@ namespace Wis.Presentation.Http.Controllers;
 public sealed class RollController : ControllerBase
 {
     private readonly IRollService _rollService;
-    
+
     public RollController(IRollService rollService)
     {
         _rollService = rollService;
@@ -28,7 +28,7 @@ public sealed class RollController : ControllerBase
 
         return Ok(response.Roll);
     }
-    
+
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult<RollDto>> RemoveRoll([FromBody] RemoveRollRequest httpRequest)
     {
@@ -42,7 +42,7 @@ public sealed class RollController : ControllerBase
             _ => throw new UnreachableException(),
         };
     }
-    
+
     [HttpGet]
     public async Task<ActionResult<RollsListDto>> GetListRolls([FromQuery] GetRollsListRequest httpRequest)
     {

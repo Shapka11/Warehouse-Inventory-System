@@ -8,7 +8,7 @@ public static class GetRollsList
         Guid? Id,
         double? Length,
         double? Weight,
-        DateTimeOffset?AddedDate,
+        DateTimeOffset? AddedDate,
         DateTimeOffset? RemovedDate);
 
     public abstract record Response

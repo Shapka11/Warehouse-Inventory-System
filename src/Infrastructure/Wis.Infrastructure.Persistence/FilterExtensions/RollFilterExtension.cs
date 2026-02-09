@@ -17,7 +17,7 @@ public static class RollFilterExtension
             ? query.Where(r => weights.Contains(r.Weight))
             : query;
     }
-    
+
     public static IQueryable<RollEntity> FilterByLength(
         this IQueryable<RollEntity> query,
         double[]? lengths)
@@ -26,7 +26,7 @@ public static class RollFilterExtension
             ? query.Where(r => lengths.Contains(r.Length))
             : query;
     }
-    
+
     public static IQueryable<RollEntity> FilterByAddedDate(
         this IQueryable<RollEntity> query,
         DateTimeOffset[]? dates)
@@ -35,7 +35,7 @@ public static class RollFilterExtension
             ? query.Where(r => dates.Contains(r.AddedDate))
             : query;
     }
-    
+
     public static IQueryable<RollEntity> FilterByRemovedDate(
         this IQueryable<RollEntity> query,
         DateTimeOffset[]? dates)
@@ -44,7 +44,7 @@ public static class RollFilterExtension
             ? query.Where(r => r.RemovedDate.HasValue && dates.Contains(r.RemovedDate.Value.Date))
             : query;
     }
-    
+
     public static IQueryable<RollEntity> FilterByDateRange(
         this IQueryable<RollEntity> query,
         (DateTimeOffset From, DateTimeOffset To)? range)

@@ -26,7 +26,7 @@ public sealed class Roll
     public Weight Weight { get; }
 
     public DateTimeOffset AddedDate { get; }
-    
+
     public DateTimeOffset? RemovedDate { get; private set; }
 
     public RollRemoveResult Remove()

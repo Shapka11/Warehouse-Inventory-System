@@ -6,7 +6,7 @@ namespace Infrastructure.Persistence;
 public class WarehouseDbContext : DbContext
 {
     public WarehouseDbContext(DbContextOptions<WarehouseDbContext> options) : base(options) { }
-    
+
     public DbSet<RollEntity> Rolls { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

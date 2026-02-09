@@ -13,7 +13,7 @@ namespace Wis.Presentation.Http.Controllers;
 public sealed class StatisticsRollController : ControllerBase
 {
     private readonly IStatisticsRollService _statisticsRollService;
-    
+
     public StatisticsRollController(IStatisticsRollService statisticsRollService)
     {
         _statisticsRollService = statisticsRollService;
@@ -25,7 +25,7 @@ public sealed class StatisticsRollController : ControllerBase
     {
         var request = new GetStatisticsRoll.Request(httpRollRequest.From, httpRollRequest.To);
         GetStatisticsRoll.Response response = await _statisticsRollService.GetStatisticsAsync(request);
-        
+
         return response switch
         {
             GetStatisticsRoll.Response.Success success => Ok(success.StatisticsRoll),

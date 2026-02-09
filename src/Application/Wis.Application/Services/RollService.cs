@@ -48,7 +48,7 @@ public sealed class RollService : IRollService
         {
             return new RemoveRoll.Response.Failure(failure.Error);
         }
-        
+
         await _context.RollsRepository.Update(roll);
         await _context.SaveChangesAsync();
 

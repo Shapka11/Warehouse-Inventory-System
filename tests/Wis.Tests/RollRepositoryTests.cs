@@ -26,9 +26,9 @@ public class RollRepositoryTests
         // Arrange
         using var context = CreateDbContext();
         var repository = new RollsRepository(context);
-        
+
         var originalRoll = new Roll(Guid.NewGuid(), new Length(15), new Weight(250), DateTimeOffset.Now);
-        
+
         var query = RollsQuery.Build(b => b.WithId(originalRoll.Id));
 
         // Act
@@ -78,7 +78,7 @@ public class RollRepositoryTests
         // Arrange
         using var context = CreateDbContext();
         var repository = new RollsRepository(context);
-        
+
         var roll = new Roll(Guid.NewGuid(), new Length(10), new Weight(100), DateTimeOffset.Now);
         await repository.AddAsync(roll);
         await context.SaveChangesAsync();

@@ -4,7 +4,7 @@ namespace Wis.Presentation.Http.Models.Rolls;
 
 public sealed class GetRollsListRequest
 {
-    public Guid? Id { get; set;}
+    public Guid? Id { get; set; }
 
     public double? Length { get; set; }
 

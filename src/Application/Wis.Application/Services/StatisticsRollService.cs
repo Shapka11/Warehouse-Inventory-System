@@ -38,37 +38,32 @@ public sealed class StatisticsRollService : IStatisticsRollService
         var totalWeight = allRolls.Count != 0 ? allRolls.Sum(r => r.Weight.Value) : 0;
 
         var storageDurations = removedInPeriod
-            .Select(r => r.RemovedDate.Value - r.AddedDate)
+            .Select(r => r.RemovedDate!.Value - r.AddedDate)
             .ToList();
 
         var minStorageTime = storageDurations.Count != 0 ? storageDurations.Min() : TimeSpan.Zero;
         var maxStorageTime = storageDurations.Count != 0 ? storageDurations.Max() : TimeSpan.Zero;
-
-        var durations = allRolls
-            .Where(r => r.RemovedDate.HasValue)
-            .Select(r => r.RemovedDate.Value - r.AddedDate)
-            .ToList();
 
         var daysCount = (to.Date - from.Date).Days + 1;
         var dailySnapshots = Enumerable.Range(0, daysCount)
             .Select(offset => from.Date.AddDays(offset))
             .Select(day =>
             {
-                var rollsOnStock = allRolls.Where(r => 
-                        r.AddedDate.Date <= day && 
+                var rollsOnStock = allRolls.Where(r =>
+                        r.AddedDate.Date <= day &&
                         (r.RemovedDate is null || r.RemovedDate.Value.Date > day))
                     .ToList();
 
                 return new
                 {
                     Day = DateOnly.FromDateTime(day),
-                    Count = rollsOnStock.Count,
+                    rollsOnStock.Count,
                     TotalWeight = rollsOnStock.Sum(r => r.Weight.Value)
                 };
             })
             .ToList();
 
-        if (dailySnapshots.Count == 0) 
+        if (dailySnapshots.Count == 0)
         {
             return new GetStatisticsRoll.Response.Failure("No data for this period");
         }
@@ -91,10 +86,10 @@ public sealed class StatisticsRollService : IStatisticsRollService
             TotalWeight: totalWeight,
             MinStorageTime: minStorageTime,
             MaxStorageTime: maxStorageTime,
-            DayWithMaxCount: maxCountDay.Day,
-            DayWithMinCount: minCountDay.Day,
-            DayWithMaxWeight: maxWeightDay.Day,
-            DayWithMinWeight: minWeightDay.Day);
+            DayWithMaxCount: maxCountDay!.Day,
+            DayWithMinCount: minCountDay!.Day,
+            DayWithMaxWeight: maxWeightDay!.Day,
+            DayWithMinWeight: minWeightDay!.Day);
 
         return new GetStatisticsRoll.Response.Success(stats);
     }

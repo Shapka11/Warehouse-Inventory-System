@@ -17,7 +17,7 @@ public static class RollMappingExtensions
             RemovedDate = domain.RemovedDate
         };
     }
-    
+
     public static Roll MapToDomain(this RollEntity entity)
     {
         return new Roll(
