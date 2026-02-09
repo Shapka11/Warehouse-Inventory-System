@@ -17,6 +17,8 @@ builder.Services.AddSwaggerGen().AddEndpointsApiExplorer();
 
 WebApplication app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

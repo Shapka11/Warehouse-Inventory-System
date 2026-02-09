@@ -13,17 +13,16 @@ namespace Wis.Tests;
 
 public class StatisticsRollServiceTests
 {
-    private readonly IPersistenceContext _context;
     private readonly IRollsRepository _repo;
     private readonly StatisticsRollService _service;
 
     public StatisticsRollServiceTests()
     {
-        _context = Substitute.For<IPersistenceContext>();
+        var context = Substitute.For<IPersistenceContext>();
         _repo = Substitute.For<IRollsRepository>();
-        _context.RollsRepository.Returns(_repo);
+        context.RollsRepository.Returns(_repo);
 
-        _service = new StatisticsRollService(_context);
+        _service = new StatisticsRollService(context);
     }
 
     [Fact]

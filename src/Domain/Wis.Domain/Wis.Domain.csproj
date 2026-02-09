@@ -7,4 +7,12 @@
         <RootNamespace>Domain</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="ValueObjects\ResultTypes\WeightCreateResult.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ValueObjects\ResultTypes\" />
+    </ItemGroup>
+
 </Project>

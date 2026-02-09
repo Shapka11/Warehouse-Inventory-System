@@ -3,6 +3,10 @@
     <File Path="Directory.Packages.props" />
     <File Path="Directory.Build.props" />
     <File Path=".gitignore" />
+    <File Path="Makefile" />
+    <File Path="Dockerfile" />
+    <File Path="docker-compose.yml" />
+    <File Path=".env.example" />
   </Folder>
 
   <Folder Name="/src/">
